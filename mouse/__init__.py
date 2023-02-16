@@ -58,7 +58,7 @@ elif _platform.system() == 'Darwin':
 else:
     raise OSError("Unsupported platform '{}'".format(_platform.system()))
 
-from ._mouse_event import ButtonEvent, MoveEvent, WheelEvent, LEFT, RIGHT, MIDDLE, X, X2, UP, DOWN, DOUBLE
+from ._mouse_event import ButtonEvent, MoveEvent, WheelEvent, LEFT, RIGHT, MIDDLE, X, X2, UP, DOWN, DOUBLE, HORIZONTAL, VERTICAL
 from ._generic import GenericListener as _GenericListener
 
 _pressed_events = set()

@@ -16,5 +16,5 @@ HORIZONTAL = 'horizontal'
 
 
 ButtonEvent = namedtuple('ButtonEvent', ['event_type', 'button', 'time'])
-WheelEvent = namedtuple('WheelEvent', ['delta', 'time'])
+WheelEvent = namedtuple('WheelEvent', ['delta', 'time', 'axis'])
 MoveEvent = namedtuple('MoveEvent', ['x', 'y', 'time'])

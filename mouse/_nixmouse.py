@@ -3,7 +3,7 @@ import struct
 from subprocess import check_output
 import re
 from ._nixcommon import EV_KEY, EV_REL, EV_MSC, EV_SYN, EV_ABS, aggregate_devices, ensure_root
-from ._mouse_event import ButtonEvent, WheelEvent, MoveEvent, LEFT, RIGHT, MIDDLE, X, X2, UP, DOWN
+from ._mouse_event import ButtonEvent, WheelEvent, MoveEvent, LEFT, RIGHT, MIDDLE, X, X2, UP, DOWN, HORIZONTAL, VERTICAL
 
 import ctypes
 import ctypes.util
@@ -89,8 +89,10 @@ def listen(queue):
         elif type == EV_REL:
             value, = struct.unpack('i', struct.pack('I', value))
 
+            if code == REL_HWHEEL:
+                event = WheelEvent(value, time, HORIZONTAL)
             if code == REL_WHEEL:
-                event = WheelEvent(value, time)
+                event = WheelEvent(value, time, VERTICAL)
             elif code in (REL_X, REL_Y):
                 x, y = get_position()
                 event = MoveEvent(x, y, time)
